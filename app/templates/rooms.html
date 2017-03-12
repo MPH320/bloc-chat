@@ -1,5 +1,18 @@
+<button ng-hide="room.isCollapsed" type="button" class="btn btn-default" ng-click="room.isCollapsed = !room.isCollapsed">Add a room</button>
+	<div ng-show="room.isCollapsed">
+        
+        <form name="room.form" ng-submit="rooms.addRoom()" ng-controller="RoomCtrl">
+            Enter new room name and hit enter:
+            <input type="text" ng-model="rooms.roomName" name="text" />
+            <input ng-click="room.isCollapsed = !room.isCollapsed" type="submit" id="submit" value="Submit" />
+            <button ng-click="room.isCollapsed = !room.isCollapsed">Cancel</button>
+        </form>
+        
+        
+	</div>
+
 <ul>
     <li ng-repeat="room in rooms.rooms">
-        {{ room.$id }}
+        {{ room.name }}
     </li>
 </ul>
