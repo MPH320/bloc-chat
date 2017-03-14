@@ -1,0 +1,63 @@
+.my-rooms {
+    display: flex;
+    width: 25%;
+    border-style: solid;
+    border-width: 1px 1px 0px 1px;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    background-color: lightblue;
+}
+
+.chat-room {
+    margin-left: 25%;
+    width: 75%;
+    border: 1px solid black;
+    color: orange;
+    position: absolute;
+    top: 10px;
+    height: 50%;
+}
+
+.rooms-list{
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+ul.rooms-list li{
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+ul.rooms-list li:hover{
+    background-color: aquamarine;
+}
+
+.rooms-button {
+    height: 10%;
+}
+
+.rooms-button:hover {
+    font-size: 0.8em;
+}
+
+.room-input{
+    width:90%;
+    margin: 2.5%;
+    padding: 0;
+}
+
+.room-text{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.room-buttons{
+    margin: auto;
+    text-align: center;
+    padding-bottom: 5px;
+}

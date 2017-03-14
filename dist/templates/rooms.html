@@ -1,18 +1,39 @@
-<button ng-hide="room.isCollapsed" type="button" class="btn btn-default" ng-click="room.isCollapsed = !room.isCollapsed">Add a room</button>
-	<div ng-show="room.isCollapsed">
-        
-        <form name="room.form" ng-submit="rooms.addRoom()" ng-controller="RoomCtrl">
-            Enter new room name and hit enter:
-            <input type="text" ng-model="rooms.roomName" name="text" />
-            <input ng-click="room.isCollapsed = !room.isCollapsed" type="submit" id="submit" value="Submit" />
-            <button ng-click="room.isCollapsed = !room.isCollapsed">Cancel</button>
-        </form>
-        
-        
-	</div>
+<section class="my-rooms">
+    <button class="rooms-button" ng-hide="room.isCollapsed" type="button" ng-click="room.isCollapsed = !room.isCollapsed">Add a room</button>
+    
+    <div ng-show="room.isCollapsed">
 
-<ul>
-    <li ng-repeat="room in rooms.rooms">
-        {{ room.name }}
-    </li>
-</ul>
+        <form ng-submit="rooms.addRoom()">
+            <div class="room-text">Enter new room name and hit enter:</div>
+           
+            <input class="room-input" id="input" type="text" ng-model="rooms.roomName" name="text" />
+            
+            <div class="room-buttons">
+                <input id="submit-button" ng-click="room.isCollapsed = !room.isCollapsed" type="submit" value="Submit" />
+                <button id="cancel-button" ng-click="room.isCollapsed = !room.isCollapsed" type="button">Cancel</button>
+            </div>
+        </form>
+
+
+    </div>
+    
+    <div >
+        <ul class="rooms-list">
+            <li ng-repeat="room in rooms.rooms">
+								<div ng-click="rooms.changeRoom(room.name, room.messages, room.$id)">{{ room.name }}</div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<div class="chat-room">
+    <h1>Room Title: {{ rooms.currentRoom }}</h1> 
+		<font ng-repeat="(key, value) in rooms.messages track by $index">
+      {{ value.username}}: {{value.content}}
+			<br>
+			Sent at: {{value.sentAt}}
+			<br><br>
+   </font>
+</div>
+
+
