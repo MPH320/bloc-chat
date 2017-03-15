@@ -12,7 +12,7 @@
     firebase.initializeApp(config);
     Room.usersRef = firebase.database().ref("Rooms");
     Room.array = $firebaseArray(Room.usersRef);
-    
+		
     return Room;
       
   }

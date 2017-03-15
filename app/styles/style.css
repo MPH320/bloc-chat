@@ -9,6 +9,27 @@
     background-color: lightblue;
 }
 
+#username-input{
+	width: 80px;
+}
+
+.username-content{
+	margin-left: 10%;
+	margin-top:10%;
+}
+
+.set-username{
+	background-color: orange;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	margin: 0%;
+	padding: 0;
+	left: 50%;
+	top: 25%;
+	z-index: 1;
+}
+
 .chat-room {
     margin-left: 25%;
     width: 75%;

@@ -1,3 +1,14 @@
+<section class="set-username" ng-hide="username.set">
+	
+	<form ng-submit="rooms.setUserName()">
+			<div class="username-content"> Set your username:
+				<input id="username-input" type="text" ng-model="rooms.newUserName" />
+				<input type="submit" value="Submit" />
+			</div>
+	</form>
+</section>
+
+
 <section class="my-rooms">
     <button class="rooms-button" ng-hide="room.isCollapsed" type="button" ng-click="room.isCollapsed = !room.isCollapsed">Add a room</button>
     
