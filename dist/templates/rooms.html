@@ -31,20 +31,28 @@
     <div >
         <ul class="rooms-list">
             <li ng-repeat="room in rooms.rooms">
-								<div ng-click="rooms.changeRoom(room.name, room.messages, room.$id)">{{ room.name }}</div>
+								<div ng-click="rooms.changeRoom(room.name, room.messages, room.$id, room)">{{ room.name }}</div>
             </li>
         </ul>
+			
     </div>
 </section>
 
 <div class="chat-room">
-    <h1>Room Title: {{ rooms.currentRoom }}</h1> 
+    <h1>Room Title: {{ rooms.currentRoom }}</h1>
 		<font ng-repeat="(key, value) in rooms.messages track by $index">
       {{ value.username}}: {{value.content}}
 			<br>
-			Sent at: {{value.sentAt}}
+			Sent at: {{value.timestamp}}
 			<br><br>
    </font>
+	
+	<section ng-show="username.set">
+		<input class="chat-input" type="text" ng-model="rooms.message"/>
+		<button id="send-message" ng-click="rooms.sendMessage()">Send Message</button>
+	</section>
 </div>
+
+
 
 

@@ -1,5 +1,8 @@
  (function() {
      function RoomCtrl($scope, $cookies, Room) {
+			 
+			 this.currentRoomRef = "";
+			 this.messageObj = {};
 			 			 
 			 if(!$cookies.blocChatCurrentUser || $cookies.blocChatCurrentUser === '')
 				 {
@@ -15,18 +18,19 @@
 				this.currentRoom = "Pick a room on the left";
 				this.messages = "";
 			 	this.currentRoomId = "";
+			 	this.message = "";
 			 		 
 				document.getElementById("submit-button").addEventListener("click", function(){ document.getElementById("input").value = ""; });
 				document.getElementById("cancel-button").addEventListener("click", function(){ document.getElementById("input").value = ""; });
     
         this.addRoom = function() {
             if (this.roomName) {          
-								this.rooms.$add({name: this.roomName})
+								this.rooms.$add({name: this.roomName, messages: []})
             }
         }
-				
+
 				this.setUserName = function(){
-					
+
 					if(this.newUserName === '')
 					{
 						$scope.username.set = false;
@@ -35,17 +39,26 @@
 						$scope.username.set = true;
 						console.log("User name set: " + $cookies.blocChatCurrentUser)
 					}
-					
+			
 				}
 				
-				this.changeRoom = function(newRoom, newMessages, newId) {
-  
+				this.changeRoom = function(newRoom, newMessages, newId, newProp) {
+					
 						this.currentRoom = newRoom;
 						this.currentRoomId = newId;
 						this.messages = newMessages;
-						this.messages = eval("[" + newMessages + "]");
-
+						Room.changeRoom(this.currentRoomId);
+						this.currentRoomRef = Room.currentRoom;
+						this.messageObj[this.currentRoom] = newId;
+						Room.messagesRef(this.currentRoomId); 
+						
         }
+				
+				this.sendMessage = function() {
+					
+					Room.messagesArray.push({ 'username': $cookies.blocChatCurrentUser, 'timestamp': 'Yabba Dabba Doo!', 'content': this.message });
+				
+				}
          
      }
  
