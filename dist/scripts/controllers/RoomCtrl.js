@@ -10,7 +10,7 @@
 					 this.newUserName = "";
 				 } else {
 					 this.newUserName = $cookies.blocChatCurrentUser;
-					 $scope.username.set = true;
+					 $scope.username = { set: true };
 			 }
 			 
         this.rooms = Room.array;
@@ -28,6 +28,12 @@
 								this.rooms.$add({name: this.roomName, messages: []})
             }
         }
+				
+				this.getTime = function(){
+						var theDate = new Date();
+						var day = theDate.getDate();
+						return theDate.toString();
+				}
 
 				this.setUserName = function(){
 
@@ -36,6 +42,7 @@
 						$scope.username.set = false;
 					} else {
 						$cookies.blocChatCurrentUser = this.newUserName;
+						$cookies.put('blocChatCurrentUser', this.newUserName);
 						$scope.username.set = true;
 						console.log("User name set: " + $cookies.blocChatCurrentUser)
 					}
@@ -53,10 +60,10 @@
 						Room.messagesRef(this.currentRoomId); 
 						
         }
-				
+
 				this.sendMessage = function() {
 					
-					Room.messagesArray.push({ 'username': $cookies.blocChatCurrentUser, 'timestamp': 'Yabba Dabba Doo!', 'content': this.message });
+					Room.messagesArray.push({ 'username': $cookies.blocChatCurrentUser, 'timestamp': this.getTime(), 'content': this.message });
 				
 				}
          

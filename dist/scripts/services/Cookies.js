@@ -1,6 +1,6 @@
 (function() {
   function Cookies($cookies, $uibModal) {
-    $cookies.blocChatCurrentUser = $cookies.get('blocChatCurrentUser');
+		$cookies.blocChatCurrentUser = $cookies.get('blocChatCurrentUser');
 		console.log("Current User : " + $cookies.blocChatCurrentUser);
     
   }
